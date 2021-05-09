@@ -16,4 +16,5 @@ Hope you Like it :)
 •Find My Num Repository: https://github.com/arfizato/FindMyNum
 
 -----------------------------------------------------Attribution-------------------------------------------------------------- 
-Icons made by https://www.freepik.com and https://www.flaticon.com/authors/darius-dan
+
+•Icons made by https://www.freepik.com and https://www.flaticon.com/authors/darius-dan
