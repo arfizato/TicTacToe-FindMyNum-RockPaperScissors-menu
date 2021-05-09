@@ -8,6 +8,14 @@ from PIL import Image, ImageTk
 import main
 
 class RockPS:
+    
+    def ExitToMenu(self):
+        global stopPlaying
+        self.stopPlaying= FALSE
+        self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
+
     def choicemade(self,choicePlayer):
         global comScore, playScore, scoreText, imageList, computerImage, playerImage,bestOfNum, keepPlaying
         self.choiceComputer= rand.randint(0,2)
@@ -29,16 +37,20 @@ class RockPS:
         if self.comScore== self.bestOfNum :
             #print("computer won "+str(self.comScore)+" - "+str(self.playScore))
             self.box= messagebox.askquestion("Computer Won!","\t      "+str(self.comScore)+" - "+str(self.playScore)+"\nWould you like to play again?",icon="question")
-            if self.box!="yes":         
-                self.keepPlaying=FALSE  
-            self.root.destroy()         
+            if self.box!="yes":   
+                self.ExitToMenu()
+            else: 
+                self.root.destroy()
+                 
             
         elif self.playScore== self.bestOfNum:        
             #print("player Won "+str(self.comScore)+" - "+str(self.playScore))
             self.box= messagebox.askquestion("Player Won!","\t      "+str(self.comScore)+" - "+str(self.playScore)+"\nWould you like to play again?",icon="question")
-            if self.box!="yes":      
-                self.keepPlaying=FALSE
-            self.root.destroy()
+            if self.box!="yes":   
+                self.ExitToMenu()
+            else: 
+                self.root.destroy()
+            
    
              
     
@@ -96,13 +108,6 @@ class RockPS:
         self.app = main.MainMenu()
         self.app.openMenu()
     
-    def ExitToMenu(self):
-        global stopPlaying
-        self.stopPlaying= TRUE
-        self.root.destroy()
-        self.app = main.MainMenu()
-        self.app.openMenu()
-
     
     """
     ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
@@ -196,6 +201,3 @@ class RockPS:
             self.menubar.add_cascade(label="Options", menu=self.file_menu)
 
             self.root.mainloop()
-
-#appTwo=RockPS()
-#appTwo.playTheGame()

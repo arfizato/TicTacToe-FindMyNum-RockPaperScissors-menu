@@ -9,18 +9,21 @@ import tkinter.font as font
 from tkinter import Menu
 
 class MainMenu:
-    def playttt(self):
+    def playttt(self): 
+        print("ttt")
         self.menu.destroy()
         self.appThree= TicTacToe.tripleT()
         self.appThree.startPlaying()   
 
 
-    def playrps(self):
+    def playrps(self): 
+        print("rps")
         self.menu.destroy()
         self.appTwo=RockPaperScissors.RockPS()
         self.appTwo.playTheGame()
 
-    def playfmn(self):
+    def playfmn(self): 
+        print("fmn")
         self.menu.destroy()
         self.app=FindMyNum.findX()
         self.app.startGame() 

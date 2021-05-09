@@ -7,12 +7,21 @@ import random as rand
 import main
 
 class findX:
+
+    def ExitToMenu(self):
+        global keepPlaying
+        self.keepPlaying= FALSE
+        self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
+
     def outOfRange(self):
         global keepPlaying
-        self.box = messagebox.askquestion("Error! Out Of Range!","Do You Want To Keep Playing ?",icon="warning")
+        self.box = messagebox.askquestion("Error! Out Of Range!","Do You Want To Play Again ?",icon="warning")
         if self.box!="yes":
-            self.keepPlaying=FALSE
-        self.root.destroy()
+            self.ExitToMenu()
+        else: 
+            self.root.destroy()
 
     def goHigher(self):
         global guess, Min, Max
@@ -34,10 +43,12 @@ class findX:
 
     def justRight(self):
         global keepPlaying, guess
-        self.box = messagebox.askquestion("Your Number Is "+str(self.guess),"Do You Want To Keep Playing ?",icon="question")
+        self.box = messagebox.askquestion("Your Number Is "+str(self.guess),"Do You Want To Play Again ?",icon="question")
         if self.box!="yes":
-            self.keepPlaying=FALSE
-        self.root.destroy()
+            self.ExitToMenu()
+        else: 
+            self.root.destroy()
+        
 
     def ClickedOnce(self,guess):
         self.compTxt.set(str(self.guess))
@@ -53,13 +64,6 @@ class findX:
         self.app = main.MainMenu()
         self.app.openMenu()
     
-    def ExitToMenu(self):
-        global stopPlaying
-        self.stopPlaying= TRUE
-        self.root.destroy()
-        self.app = main.MainMenu()
-        self.app.openMenu()
-
    
     """
     ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 

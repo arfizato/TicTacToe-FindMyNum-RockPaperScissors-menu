@@ -4,8 +4,15 @@ from tkinter import messagebox
 import tkinter.font as font
 #from main import MainMenu
 import main
-""" GREAT COLOR PALETTES :https://imgur.com/Jmk6LEH """
 class tripleT:
+    
+    def ExitToMenu(self):
+        global keepPlaying
+        self.keepPlaying= FALSE
+        self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
+
     def insertWinButtons(self,xo,l,c,nextl,nextc,prevl,prevc):
         self.winButtonOne= Button(self.root,bd=0,text=xo,width=12,height=5,fg="#323831",bg="#a6e22e")
         self.winButtonOne.grid(row=l+1,column=c)
@@ -48,7 +55,7 @@ class tripleT:
             
     # Defining the functions for the buttons 
     def buttonClicked(self,text,button,l,c):
-        global x, numOfButtonsDisabled, stopPlaying, firstChar, secondChar, playerOneWins, playerTwoWins
+        global x, numOfButtonsDisabled, keepPlaying, firstChar, secondChar, playerOneWins, playerTwoWins
         self.x+=1
         self.atLeastOnePlayerWon=FALSE
 
@@ -68,10 +75,12 @@ class tripleT:
             if self.checkForWin(self.mat,l-1,c,self.firstChar):
                 self.playerTwoWins+=1
                 self.atLeastOnePlayerWon= TRUE
-                self.box = messagebox.askquestion("Player 2 Won", "\tSCORE:  "+str(self.playerOneWins)+" - "+str(self.playerTwoWins)+"\nWould You Like To Keep Playing?",icon = 'question')
+                self.box = messagebox.askquestion("Player 2 Won", "\tSCORE:  "+str(self.playerOneWins)+" - "+str(self.playerTwoWins)+"\nWould You Like To Play Again?",icon = 'question')
                 if (self.box !='yes'):
-                    self.stopPlaying=TRUE         
-                self.root.destroy()      
+                    self.ExitToMenu()
+                else: 
+                    self.root.destroy()
+                  
         else:
             #only changes color if the player chooses the "only color" option before he starts playing
             if (self.firstChar ==""):
@@ -84,18 +93,22 @@ class tripleT:
             if self.checkForWin(self.mat,l-1,c,self.secondChar):
                 self.playerOneWins+=1
                 self.atLeastOnePlayerWon= TRUE
-                self.box=messagebox.askquestion("Player 1 Won","\tSCORE:  "+str(self.playerOneWins)+" - "+str(self.playerTwoWins)+"\nWould You Like To Keep Playing?",icon = 'question')
+                self.box=messagebox.askquestion("Player 1 Won","\tSCORE:  "+str(self.playerOneWins)+" - "+str(self.playerTwoWins)+"\nWould You Like To Play Again?",icon = 'question')
                 if (self.box!='yes'):
-                    self.stopPlaying=TRUE          
-                self.root.destroy()  
+                    self.ExitToMenu()
+                else: 
+                    self.root.destroy()
+                
 
         #in case of self.numOfButtonsDisabled==9 then we know it's a draw unless someone won with the last button click 
         self.numOfButtonsDisabled+=1
         if self.numOfButtonsDisabled==9 and self.atLeastOnePlayerWon == FALSE:
-            self.box=messagebox.askquestion("It's a TIE ", "\tSCORE:  "+str(self.playerOneWins)+" - "+str(self.playerTwoWins)+"\nWould You Like To Keep Playing?",icon = 'question')
+            self.box=messagebox.askquestion("It's a TIE ", "\tSCORE:  "+str(self.playerOneWins)+" - "+str(self.playerTwoWins)+"\nWould You Like To Play Again?",icon = 'question')
             if (self.box!='yes'):
-                self.stopPlaying=TRUE
-            self.root.destroy()
+                self.ExitToMenu()
+            else: 
+                self.root.destroy()
+            
 
     #picking what to fill the buttons with
     def changeText(self,text,button):
@@ -106,18 +119,12 @@ class tripleT:
         text.set(self.charList[self.charNumber][2])   
 
     def onClose(self):
-        global stopPlaying
-        self.stopPlaying=TRUE
+        global keepPlaying
+        self.keepPlaying=FALSE
         self.root.destroy()
         self.app = main.MainMenu()
         self.app.openMenu()
     
-    def ExitToMenu(self):
-        global stopPlaying
-        self.stopPlaying= TRUE
-        self.root.destroy()
-        self.app = main.MainMenu()
-        self.app.openMenu()
 
     """
     ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
@@ -128,11 +135,11 @@ class tripleT:
 
     """
     def startPlaying(self): 
-        global stopPlaying, playerOneWins, playerTwoWins
-        self.stopPlaying=FALSE #boolean deciding when to stop the while loop: only becomes true if the player clicks no on the popup 
+        global keepPlaying, playerOneWins, playerTwoWins
+        self.keepPlaying=TRUE #boolean deciding when to stop the while loop: only becomes true if the player clicks no on the popup 
         self.playerTwoWins=0 #tracking how many times player 1 won 
         self.playerOneWins=0#tracking how many times player 2 won
-        while (self.stopPlaying==FALSE):
+        while (self.keepPlaying==TRUE):
             
             self.charNumber=0#variable selecing the subarrays containing the preferred symbols
             self.charList=[["O","X","X O"],["+","-","- +"],["B","A","A B"],["Y","X","X Y"],[""," ","Only Color"]] # list of preferred symbols ("X O","A B", etc...) the user has to pick from
