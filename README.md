@@ -11,6 +11,17 @@ Hope you Like it :)
 
 -----------------------------------------------------USEFUL LINKS--------------------------------------------------------------
 
+•Tkinter Menu :  https://www.pythontutorial.net/tkinter/tkinter-menu/
+  
+•Import class from another file and directory in Python: https://codeigo.com/python/import-class-from-another-file-and-directory
+
+•Python - Tkinter Colors:  https://www.tutorialspoint.com/python/tk_colors.htm
+
+•Python | Add image on a Tkinter button:  https://www.geeksforgeeks.org/python-add-image-on-a-tkinter-button/
+
+
+-----------------------------------------------------RESPOSITORIES--------------------------------------------------------------
+
 •TicTacToe Repository: https://github.com/arfizato/TicTacToe-Python-Project
 
 •Rock Paper Scissors Repository: https://github.com/arfizato/rock-paper-scissors
