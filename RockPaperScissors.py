@@ -7,6 +7,7 @@ import random as rand
 from PIL import Image, ImageTk
 import main
 
+
 class RockPS:
     
     def ExitToMenu(self):
@@ -201,3 +202,11 @@ class RockPS:
             self.menubar.add_cascade(label="Options", menu=self.file_menu)
 
             self.root.mainloop()
+"""Coded By 
+                 █████╗ ██████╗ ███████╗██╗███████╗ █████╗ ████████╗ ██████╗ 
+                ██╔══██╗██╔══██╗██╔════╝██║╚══███╔╝██╔══██╗╚══██╔══╝██╔═══██╗
+                ███████║██████╔╝█████╗  ██║  ███╔╝ ███████║   ██║   ██║   ██║
+                ██╔══██║██╔══██╗██╔══╝  ██║ ███╔╝  ██╔══██║   ██║   ██║   ██║
+                ██║  ██║██║  ██║██║     ██║███████╗██║  ██║   ██║   ╚██████╔╝
+                ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
+"""

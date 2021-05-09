@@ -52,17 +52,35 @@ class MainMenu:
 
         self.tttImage=PhotoImage(file="images/TicTacToe.png")
         self.tttImage=self.tttImage.subsample(6,6)
-        self.ttt= Button(self.menu,command= lambda :self.playttt(), text="Click to Play 'TicTacToe'",font=self.myFont,image=self.tttImage,width=420,height=150,compound="top",bd=0,bg="#8feff9",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=2,column=1,pady=2)
+        self.ttt= Button(self.menu,command= lambda :self.playttt(), text="TicTacToe",font=self.myFont,image=self.tttImage,width=420,height=150,compound="top",bd=0,bg="#8feff9",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=2,column=1,pady=2)
 
-        #self.tttt= Button(self.menu,command= lambda :self.playttt(), text="Click to Play 'TicTacToe'",font=self.myFont,image=self.tttImage,width=418,height=148,compound="top",bd=0,bg="#fff",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=2,column=1,pady=2)
+        self.tttt= Button(self.menu,command= lambda :self.playttt(), text="TicTacToe",font=self.myFont,image=self.tttImage,width=416,height=146,compound="top",bd=0,bg="#fff",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=2,column=1,pady=2)
+
+        self.ttt= Button(self.menu,command= lambda :self.playttt(), text="TicTacToe",font=self.myFont,image=self.tttImage,width=412,height=142,compound="top",bd=0,bg="#8feff9",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=2,column=1,pady=2)
 
         self.rpsImage=PhotoImage(file="images/RockPaperScissors.png")
         self.rpsImage=self.rpsImage.subsample(6,6)
-        self.rps= Button(self.menu,command= lambda :self.playrps(), text="Click to Play 'Rock Paper Scissors'",font=self.myFont,image=self.rpsImage,width=420,height=150,compound="top",bd=0,bg="#f9ed80",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=3,column=1,pady=2)
+        self.rps= Button(self.menu,command= lambda :self.playrps(), text="Rock Paper Scissors",font=self.myFont,image=self.rpsImage,width=420,height=150,compound="top",bd=0,bg="#f9ed80",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=3,column=1,pady=2)
+
+        self.rps= Button(self.menu,command= lambda :self.playrps(), text="Rock Paper Scissors",font=self.myFont,image=self.rpsImage,width=416,height=146,compound="top",bd=0,bg="#fff",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=3,column=1,pady=2)
+
+        self.rps= Button(self.menu,command= lambda :self.playrps(), text="Rock Paper Scissors",font=self.myFont,image=self.rpsImage,width=412,height=142,compound="top",bd=0,bg="#f9ed80",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=3,column=1,pady=2)
 
         self.fmnImage=PhotoImage(file="images/FindMyNum.png")
         self.fmnImage=self.fmnImage.subsample(6,6)
-        self.fmn=Button(self.menu,command= lambda :self.playfmn(), text="Click to Play 'Find My Number'",font=self.myFont,image=self.fmnImage,width=420,height=150,compound="top",bd=0,bg="#f39faf",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=4,column=1,pady=2)
+        self.fmn=Button(self.menu,command= lambda :self.playfmn(), text="Find My Number",font=self.myFont,image=self.fmnImage,width=420,height=150,compound="top",bd=0,bg="#f39faf",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=4,column=1,pady=2)
+
+        self.fmn=Button(self.menu,command= lambda :self.playfmn(), text="Find My Number",font=self.myFont,image=self.fmnImage,width=416,height=146,compound="top",bd=0,bg="#fff",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=4,column=1,pady=2)
+
+        self.fmn=Button(self.menu,command= lambda :self.playfmn(), text="Find My Number",font=self.myFont,image=self.fmnImage,width=412,height=142,compound="top",bd=0,bg="#f39faf",fg=self.textColor,activebackground=self.buttonColor,activeforeground=self.textColor).grid(row=4,column=1,pady=2)
 
         self.menu.mainloop() 
+"""Coded By 
+                 █████╗ ██████╗ ███████╗██╗███████╗ █████╗ ████████╗ ██████╗ 
+                ██╔══██╗██╔══██╗██╔════╝██║╚══███╔╝██╔══██╗╚══██╔══╝██╔═══██╗
+                ███████║██████╔╝█████╗  ██║  ███╔╝ ███████║   ██║   ██║   ██║
+                ██╔══██║██╔══██╗██╔══╝  ██║ ███╔╝  ██╔══██║   ██║   ██║   ██║
+                ██║  ██║██║  ██║██║     ██║███████╗██║  ██║   ██║   ╚██████╔╝
+                ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
+"""
 
