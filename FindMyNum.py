@@ -20,7 +20,7 @@ class findX:
         try :
             self.guess=rand.randint(self.Min,self.Max)
         except:
-            outOfRange()
+            self.outOfRange()
         self.compTxt.set(str(self.guess))
 
     def goLower(self):
@@ -29,7 +29,7 @@ class findX:
         try :
             self.guess=rand.randint(self.Min,self.Max)
         except:
-            outOfRange()
+            self.outOfRange()
         self.compTxt.set(str(self.guess))
 
     def justRight(self):
@@ -50,6 +50,8 @@ class findX:
         global keepPlaying
         self.keepPlaying=FALSE 
         self.root.destroy() 
+        self.app = main.MainMenu()
+        self.app.openMenu()
     
     def ExitToMenu(self):
         global stopPlaying

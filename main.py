@@ -61,30 +61,3 @@ class MainMenu:
 
         self.menu.mainloop() 
 
-mainApp=MainMenu()
-mainApp.openMenu()
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-app=findX()
-app.startGame()
-
-    appTwo=RockPS()
-    appTwo.playTheGame()
-
-appThree= tripleT()
-appThree.startPlaying() 
-#"""
-
-

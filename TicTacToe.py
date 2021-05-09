@@ -109,6 +109,8 @@ class tripleT:
         global stopPlaying
         self.stopPlaying=TRUE
         self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
     
     def ExitToMenu(self):
         global stopPlaying

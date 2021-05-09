@@ -93,6 +93,8 @@ class RockPS:
         global keepPlaying
         self.keepPlaying=FALSE 
         self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
     
     def ExitToMenu(self):
         global stopPlaying
