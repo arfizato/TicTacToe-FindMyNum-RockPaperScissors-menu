@@ -5,6 +5,7 @@ import tkinter.font as font
 from random import * 
 import random as rand
 from PIL import Image, ImageTk
+import main
 
 class RockPS:
     def choicemade(self,choicePlayer):
@@ -27,18 +28,19 @@ class RockPS:
         self.scoreText.set(str(self.comScore)+" - "+str(self.playScore))
         if self.comScore== self.bestOfNum :
             #print("computer won "+str(self.comScore)+" - "+str(self.playScore))
-            self.box= messagebox.askquestion("Computer Won!","\t      "+str(self.comScore)+" - "+str(self.playScore)+"\nWould you like to keep playing?",icon="question")
+            self.box= messagebox.askquestion("Computer Won!","\t      "+str(self.comScore)+" - "+str(self.playScore)+"\nWould you like to play again?",icon="question")
             if self.box!="yes":         
                 self.keepPlaying=FALSE  
             self.root.destroy()         
             
         elif self.playScore== self.bestOfNum:        
             #print("player Won "+str(self.comScore)+" - "+str(self.playScore))
-            self.box= messagebox.askquestion("Player Won!","\t      "+str(self.comScore)+" - "+str(self.playScore)+"\nWould you like to keep playing?",icon="question")
+            self.box= messagebox.askquestion("Player Won!","\t      "+str(self.comScore)+" - "+str(self.playScore)+"\nWould you like to play again?",icon="question")
             if self.box!="yes":      
                 self.keepPlaying=FALSE
             self.root.destroy()
-            
+   
+             
     
     def startgame(self):
 
@@ -91,8 +93,23 @@ class RockPS:
         global keepPlaying
         self.keepPlaying=FALSE 
         self.root.destroy()
+    
+    def ExitToMenu(self):
+        global stopPlaying
+        self.stopPlaying= TRUE
+        self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
 
-    """-------------------------------main-------------------------------"""
+    
+    """
+    ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
+    ████  ████ ██   ██ ██ ████   ██     ██      ██    ██ ████   ██ ██         ██    ██ ██    ██ ████   ██ 
+    ██ ████ ██ ███████ ██ ██ ██  ██     █████   ██    ██ ██ ██  ██ ██         ██    ██ ██    ██ ██ ██  ██ 
+    ██  ██  ██ ██   ██ ██ ██  ██ ██     ██      ██    ██ ██  ██ ██ ██         ██    ██ ██    ██ ██  ██ ██ 
+    ██      ██ ██   ██ ██ ██   ████     ██       ██████  ██   ████  ██████    ██    ██  ██████  ██   ████                                                                                                       
+
+    """ 
     def playTheGame(self):
         self.imageList=['images/rock.png','images/paper.png','images/scissors.png','images/empty.png']
         self.keepPlaying= TRUE
@@ -100,7 +117,7 @@ class RockPS:
         while self.keepPlaying==TRUE : 
             self.root = tk.Tk()
             self.root.title("Rock Paper Scissors")
-            self.root.iconbitmap(r'images/scissors.ico')
+            self.root.iconbitmap(r'images/RockPaperScissorsDavid.ico')
             self.root.configure(bg="#fff")
             self.bestOfNum=3
             self.playScore=0
@@ -161,6 +178,20 @@ class RockPS:
             self.sprButton.grid(row=2,column=0)
             self.sprButton["font"]=self.textFont
             self.sprButton["state"]=DISABLED
+            
+            """-------------------MENU-----------------"""
+            # create a menubar
+            self.menubar = Menu(self.root)
+            self.root.config(menu=self.menubar)
+
+            # create a menu
+            self.file_menu = Menu(self.menubar)
+
+            # add a menu item to the menu
+            self.file_menu.add_command(label='Exit To Main Menu', command=self.ExitToMenu)
+
+            # add the File menu to the menubar
+            self.menubar.add_cascade(label="Options", menu=self.file_menu)
 
             self.root.mainloop()
 

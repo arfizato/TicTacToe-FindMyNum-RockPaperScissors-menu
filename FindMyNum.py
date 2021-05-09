@@ -4,6 +4,7 @@ from tkinter import messagebox
 import tkinter.font as font
 from random import * 
 import random as rand
+import main
 
 class findX:
     def outOfRange(self):
@@ -49,13 +50,29 @@ class findX:
         global keepPlaying
         self.keepPlaying=FALSE 
         self.root.destroy() 
+    
+    def ExitToMenu(self):
+        global stopPlaying
+        self.stopPlaying= TRUE
+        self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
 
+   
+    """
+    ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
+    ████  ████ ██   ██ ██ ████   ██     ██      ██    ██ ████   ██ ██         ██    ██ ██    ██ ████   ██ 
+    ██ ████ ██ ███████ ██ ██ ██  ██     █████   ██    ██ ██ ██  ██ ██         ██    ██ ██    ██ ██ ██  ██ 
+    ██  ██  ██ ██   ██ ██ ██  ██ ██     ██      ██    ██ ██  ██ ██ ██         ██    ██ ██    ██ ██  ██ ██ 
+    ██      ██ ██   ██ ██ ██   ████     ██       ██████  ██   ████  ██████    ██    ██  ██████  ██   ████                                                                                                       
+
+    """
     def startGame(self):
         self.keepPlaying= TRUE
         while self.keepPlaying== TRUE:    
             self.root= tk.Tk()
             self.root.title("flippity flip")
-            self.root.iconbitmap('images/camera.ico')
+            self.root.iconbitmap('images/FindMyNumDavid.ico')
             self.root.configure(bg="#FAF9FC")
             self.root.protocol('WM_DELETE_WINDOW', self.OnClose)
 
@@ -90,6 +107,20 @@ class findX:
             self.tooHigh.grid(padx=2,pady=2,row=2,column=2)
             self.tooHigh["font"]=self.TextFont
             self.tooHigh["state"]=DISABLED
+            
+            """-------------------MENU-----------------"""
+            # create a menubar
+            self.menubar = Menu(self.root)
+            self.root.config(menu=self.menubar)
+
+            # create a menu
+            self.file_menu = Menu(self.menubar)
+
+            # add a menu item to the menu
+            self.file_menu.add_command(label='Exit To Main Menu', command=self.ExitToMenu)
+
+            # add the File menu to the menubar
+            self.menubar.add_cascade(label="Options", menu=self.file_menu)
 
             self.root.mainloop()
 

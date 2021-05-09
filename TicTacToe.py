@@ -2,6 +2,8 @@ from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
 import tkinter.font as font
+#from main import MainMenu
+import main
 """ GREAT COLOR PALETTES :https://imgur.com/Jmk6LEH """
 class tripleT:
     def insertWinButtons(self,xo,l,c,nextl,nextc,prevl,prevc):
@@ -107,20 +109,22 @@ class tripleT:
         global stopPlaying
         self.stopPlaying=TRUE
         self.root.destroy()
+    
+    def ExitToMenu(self):
+        global stopPlaying
+        self.stopPlaying= TRUE
+        self.root.destroy()
+        self.app = main.MainMenu()
+        self.app.openMenu()
 
-    """--------------------------Main--------------------------"""    
     """
+    ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
+    ████  ████ ██   ██ ██ ████   ██     ██      ██    ██ ████   ██ ██         ██    ██ ██    ██ ████   ██ 
+    ██ ████ ██ ███████ ██ ██ ██  ██     █████   ██    ██ ██ ██  ██ ██         ██    ██ ██    ██ ██ ██  ██ 
+    ██  ██  ██ ██   ██ ██ ██  ██ ██     ██      ██    ██ ██  ██ ██ ██         ██    ██ ██    ██ ██  ██ ██ 
+    ██      ██ ██   ██ ██ ██   ████     ██       ██████  ██   ████  ██████    ██    ██  ██████  ██   ████                                                                                                       
 
-
- █████╗ ██████╗ ███████╗██╗███████╗ █████╗ ████████╗ ██████╗ 
-██╔══██╗██╔══██╗██╔════╝██║╚══███╔╝██╔══██╗╚══██╔══╝██╔═══██╗
-███████║██████╔╝█████╗  ██║  ███╔╝ ███████║   ██║   ██║   ██║
-██╔══██║██╔══██╗██╔══╝  ██║ ███╔╝  ██╔══██║   ██║   ██║   ██║
-██║  ██║██║  ██║██║     ██║███████╗██║  ██║   ██║   ╚██████╔╝
-╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
-                                                             
-
-"""
+    """
     def startPlaying(self): 
         global stopPlaying, playerOneWins, playerTwoWins
         self.stopPlaying=FALSE #boolean deciding when to stop the while loop: only becomes true if the player clicks no on the popup 
@@ -135,7 +139,7 @@ class tripleT:
                 
             self.root = tk.Tk()
             self.root.title("Tic Tac toe")
-            self.root.iconbitmap(r'images/TicTacToe.ico')
+            self.root.iconbitmap(r'images/TicTacToeDavid.ico')
             self.root.configure(bg="#c7dabf")
             self.root.protocol('WM_DELETE_WINDOW', self.onClose)
             
@@ -206,6 +210,20 @@ class tripleT:
             self.button9.grid(padx=2,pady=1,row=1 ,column=2) 
             self.button9["font"]= self.myFont
 
+            """-------------------MENU-----------------"""
+            # create a menubar
+            self.menubar = Menu(self.root)
+            self.root.config(menu=self.menubar)
+
+            # create a menu
+            self.file_menu = Menu(self.menubar)
+
+            # add a menu item to the menu
+            self.file_menu.add_command(label='Exit To Main Menu', command=self.ExitToMenu)
+
+            # add the File menu to the menubar
+            self.menubar.add_cascade(label="Options", menu=self.file_menu)
+
 
             self.root.mainloop()
 
@@ -220,6 +238,12 @@ class tripleT:
 ██╔══██║██╔══██╗██╔══╝  ██║ ███╔╝  ██╔══██║   ██║   ██║   ██║
 ██║  ██║██║  ██║██║     ██║███████╗██║  ██║   ██║   ╚██████╔╝
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ 
+
+ ▄▄▄· ▄• ▄▌▄▄▄▄▄▪  .▄▄ · ▄▄▄▄▄▪   ▄▄·     • ▌ ▄ ·.        ▐ ▄ ▄ •▄ ▄▄▄ . ▄· ▄▌
+▐█ ▀█ █▪██▌•██  ██ ▐█ ▀. •██  ██ ▐█ ▌▪    ·██ ▐███▪▪     •█▌▐██▌▄▌▪▀▄.▀·▐█▪██▌
+▄█▀▀█ █▌▐█▌ ▐█.▪▐█·▄▀▀▀█▄ ▐█.▪▐█·██ ▄▄    ▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▐▀▀▄·▐▀▀▪▄▐█▌▐█▪
+▐█ ▪▐▌▐█▄█▌ ▐█▌·▐█▌▐█▄▪▐█ ▐█▌·▐█▌▐███▌    ██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█.█▌▐█▄▄▌ ▐█▀·.
+ ▀  ▀  ▀▀▀  ▀▀▀ ▀▀▀ ▀▀▀▀  ▀▀▀ ▀▀▀·▀▀▀     ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪·▀  ▀ ▀▀▀   ▀ • 
                                                              
 
 """
