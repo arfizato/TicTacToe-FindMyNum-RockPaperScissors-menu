@@ -10,8 +10,8 @@ import main
 class RockPS:
     
     def ExitToMenu(self):
-        global stopPlaying
-        self.stopPlaying= FALSE
+        global keepPlaying
+        self.keepPlaying= FALSE
         self.root.destroy()
         self.app = main.MainMenu()
         self.app.openMenu()
