@@ -78,6 +78,7 @@ class findX:
         while self.keepPlaying== TRUE:    
             self.root= tk.Tk()
             self.root.title("flippity flip")
+            self.root.geometry("+300+200")
             self.root.iconbitmap('images/FindMyNumDavid.ico')
             self.root.configure(bg="#FAF9FC")
             self.root.protocol('WM_DELETE_WINDOW', self.OnClose)

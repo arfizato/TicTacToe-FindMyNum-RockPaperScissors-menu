@@ -125,6 +125,7 @@ class RockPS:
         while self.keepPlaying==TRUE : 
             self.root = tk.Tk()
             self.root.title("Rock Paper Scissors")
+            self.root.geometry("+300+150")
             self.root.iconbitmap(r'images/RockPaperScissorsDavid.ico')
             self.root.configure(bg="#fff")
             self.bestOfNum=3

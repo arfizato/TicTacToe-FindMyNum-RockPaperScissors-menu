@@ -10,20 +10,20 @@ from tkinter import Menu
 
 class MainMenu:
     def playttt(self): 
-        print("ttt")
+        #print("ttt")
         self.menu.destroy()
         self.appThree= TicTacToe.tripleT()
         self.appThree.startPlaying()   
 
 
     def playrps(self): 
-        print("rps")
+        #print("rps")
         self.menu.destroy()
         self.appTwo=RockPaperScissors.RockPS()
         self.appTwo.playTheGame()
 
     def playfmn(self): 
-        print("fmn")
+        #print("fmn")
         self.menu.destroy()
         self.app=FindMyNum.findX()
         self.app.startGame() 
@@ -41,6 +41,7 @@ class MainMenu:
         self.menu.title("Main Menu")
         self.menu.iconbitmap("images/menuDavid.ico")
         self.menu.configure(bg="#a07ab1")
+        self.menu.geometry("+500+0")
 
         self.labelFont= font.Font(family="Times",size=40,weight="bold",slant="italic")
         self.myFont=font.Font(family="Times",size=20,weight="bold",slant="italic")

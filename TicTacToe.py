@@ -148,6 +148,7 @@ class tripleT:
                 
             self.root = tk.Tk()
             self.root.title("Tic Tac toe")
+            self.root.geometry("+450+200")
             self.root.iconbitmap(r'images/TicTacToeDavid.ico')
             self.root.configure(bg="#c7dabf")
             self.root.protocol('WM_DELETE_WINDOW', self.onClose)
