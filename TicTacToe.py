@@ -109,7 +109,6 @@ class tripleT:
             else: 
                 self.root.destroy()
             
-
     #picking what to fill the buttons with
     def changeText(self,text,button):
         global firstChar, secondChar, charList, charNumber
@@ -125,6 +124,23 @@ class tripleT:
         self.app = main.MainMenu()
         self.app.openMenu()
     
+    
+    def center(self, win):
+        """
+        centers a tkinter window
+        :param win: the main window or Toplevel window to center
+        """
+        win.update_idletasks()
+        self.width = win.winfo_width()
+        self.frm_width = win.winfo_rootx() - win.winfo_x()
+        self.win_width = self.width + 2 * self.frm_width
+        self.height = win.winfo_height()
+        self.titlebar_height = win.winfo_rooty() - win.winfo_y()
+        self.win_height = self.height + self.titlebar_height + self.frm_width
+        self.x = win.winfo_screenwidth() // 2 - self.win_width // 2
+        self.y = win.winfo_screenheight() // 2 - self.win_height // 2
+        win.geometry('{}x{}+{}+{}'.format(self.width, self.height, self.x,self. y))
+        win.deiconify()
 
     """
     ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
@@ -148,9 +164,11 @@ class tripleT:
                 
             self.root = tk.Tk()
             self.root.title("Tic Tac toe")
-            self.root.geometry("+450+200")
+            self.root.geometry("352x425")
+            self.center(self.root)
             self.root.iconbitmap(r'images/TicTacToeDavid.ico')
             self.root.configure(bg="#c7dabf")
+            self.root.resizable(False, False) 
             self.root.protocol('WM_DELETE_WINDOW', self.onClose)
             
             # define font
@@ -220,7 +238,7 @@ class tripleT:
             self.button9.grid(padx=2,pady=1,row=1 ,column=2) 
             self.button9["font"]= self.myFont
 
-            """-------------------MENU-----------------"""
+            """-------------------MENU-----------------
             # create a menubar
             self.menubar = Menu(self.root)
             self.root.config(menu=self.menubar)
@@ -233,6 +251,7 @@ class tripleT:
 
             # add the File menu to the menubar
             self.menubar.add_cascade(label="Options", menu=self.file_menu)
+            """
 
 
             self.root.mainloop()

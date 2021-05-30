@@ -79,12 +79,13 @@ class findX:
             self.root= tk.Tk()
             self.root.title("flippity flip")
             self.root.geometry("+300+200")
+            self.root.resizable(False, False)
             self.root.iconbitmap('images/FindMyNumDavid.ico')
             self.root.configure(bg="#FAF9FC")
             self.root.protocol('WM_DELETE_WINDOW', self.OnClose)
 
-            self.CompGenFont= font.Font(family="Times",size=20,weight="bold",slant="italic")
-            self.TextFont= font.Font(family="Times",weight="bold")
+            self.CompGenFont= font.Font(family="Reem kufi",size=20,weight="bold",slant="italic")
+            self.TextFont= font.Font(family="reem kufi",weight="bold")
 
             global guess, Min, Max 
             self.Min=0
@@ -115,7 +116,7 @@ class findX:
             self.tooHigh["font"]=self.TextFont
             self.tooHigh["state"]=DISABLED
             
-            """-------------------MENU-----------------"""
+            """-------------------MENU-----------------
             # create a menubar
             self.menubar = Menu(self.root)
             self.root.config(menu=self.menubar)
@@ -128,6 +129,7 @@ class findX:
 
             # add the File menu to the menubar
             self.menubar.add_cascade(label="Options", menu=self.file_menu)
+            """
 
             self.root.mainloop()
 """Coded By 

@@ -52,11 +52,8 @@ class RockPS:
             else: 
                 self.root.destroy()
             
-   
-             
-    
     def startgame(self):
-
+        self.root.geometry("354x210")
         self.startButton.destroy()
         self.bestOfButton.destroy()
         self.rpsButton.destroy()
@@ -96,7 +93,6 @@ class RockPS:
         self.scissors= Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.scissorsImage,command=lambda : self.choicemade(2))
         self.scissors.grid(padx=2,pady=3,row=2,column=2)
         
-
     def bestOfWhat(self):
         global bestOfNum
         self.bestOfNum= self.bestOfNum+2 if self.bestOfNum < 7 else 1
@@ -108,7 +104,23 @@ class RockPS:
         self.root.destroy()
         self.app = main.MainMenu()
         self.app.openMenu()
-    
+       
+    def center(self, win):
+        """
+        centers a tkinter window
+        :param win: the main window or Toplevel window to center
+        """
+        win.update_idletasks()
+        self.width = win.winfo_width()
+        self.frm_width = win.winfo_rootx() - win.winfo_x()
+        self.win_width = self.width + 2 * self.frm_width
+        self.height = win.winfo_height()
+        self.titlebar_height = win.winfo_rooty() - win.winfo_y()
+        self.win_height = self.height + self.titlebar_height + self.frm_width
+        self.x = win.winfo_screenwidth() // 2 - self.win_width // 2
+        self.y = win.winfo_screenheight() // 2 - self.win_height // 2
+        win.geometry('{}x{}+{}+{}'.format(self.width, self.height, self.x,self. y))
+        win.deiconify()
     
     """
     ███    ███  █████  ██ ███    ██     ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ 
@@ -125,7 +137,9 @@ class RockPS:
         while self.keepPlaying==TRUE : 
             self.root = tk.Tk()
             self.root.title("Rock Paper Scissors")
-            self.root.geometry("+300+150")
+            self.root.geometry("650x345")
+            self.center(self.root)
+            self.root.resizable(False, False) 
             self.root.iconbitmap(r'images/RockPaperScissorsDavid.ico')
             self.root.configure(bg="#fff")
             self.bestOfNum=3
@@ -188,7 +202,7 @@ class RockPS:
             self.sprButton["font"]=self.textFont
             self.sprButton["state"]=DISABLED
             
-            """-------------------MENU-----------------"""
+            """-------------------MENU-----------------
             # create a menubar
             self.menubar = Menu(self.root)
             self.root.config(menu=self.menubar)
@@ -201,6 +215,7 @@ class RockPS:
 
             # add the File menu to the menubar
             self.menubar.add_cascade(label="Options", menu=self.file_menu)
+            """
 
             self.root.mainloop()
 """Coded By 
