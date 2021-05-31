@@ -17,8 +17,13 @@ class RockPS:
         self.app = main.MainMenu()
         self.app.openMenu()
 
-    def choicemade(self,choicePlayer):
+    def choicemade(self, score, choicePlayer):
         global comScore, playScore, scoreText, imageList, computerImage, playerImage,bestOfNum, keepPlaying
+        if (score.winfo_width()==334):
+            score.grid_forget()
+            score["width"]=110
+            score.grid(row=1,column=1)
+
         self.choiceComputer= rand.randint(0,2)
 
         self.computerImage=self.imageList[self.choiceComputer]
@@ -67,30 +72,29 @@ class RockPS:
         self.computer.grid(row=1, column=0)
         self.computer["state"]=DISABLED
         self.computer["font"]= self.gameFont
-
-        
-        self.scoreText.set("Click a Button\nto \nStart Playing")
-        self.scoreImage= PhotoImage(file= r'images/empty.png')
-        self.score= Button(self.root, bd=0, height=120, width=110,disabledforeground ="#c1c1c1", bg="#426973",textvariable=self.scoreText,image=self.scoreImage, compound= BOTTOM )
-        self.score.grid(row=1,column=1)
-        self.score["state"]=DISABLED
-        self.score["font"]= self.gameFont
         
         
         self.player.grid(row=1, column=2)
         self.player["state"]=DISABLED
         self.player["font"]= self.gameFont
 
+        self.scoreText.set("Pick:\nRock, Paper or Scissors \nTo Start Playing")
+        self.scoreImage= PhotoImage(file= r'images/empty.png')
+        self.score= Button(self.root, bd=0, height=120, width=330,disabledforeground ="#c1c1c1", bg="#426973",textvariable=self.scoreText,image=self.scoreImage, compound= BOTTOM )
+        self.score.grid(row=1,column=0,columnspan=3)
+        self.score["state"]=DISABLED
+        self.score["font"]= self.gameFont
+
         #rockImage= rockImage.subsample(8,8)
-        self.rock = Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.rockImage,command=lambda : self.choicemade(0))
+        self.rock = Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.rockImage,command=lambda : self.choicemade(self.score,0))
         self.rock.grid(padx=2,pady=3,row=2,column=0)
 
         
-        self.paper = Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.paperImage,command=lambda : self.choicemade(1))
+        self.paper = Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.paperImage,command=lambda : self.choicemade(self.score,1))
         self.paper.grid(padx=2,pady=3,row=2,column=1)
 
         
-        self.scissors= Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.scissorsImage,command=lambda : self.choicemade(2))
+        self.scissors= Button(self.root,bd=0,height=80,width=112, bg="#426973", activebackground ="#ECEAEF",image=self.root.scissorsImage,command=lambda : self.choicemade(self.score,2))
         self.scissors.grid(padx=2,pady=3,row=2,column=2)
         
     def bestOfWhat(self):
